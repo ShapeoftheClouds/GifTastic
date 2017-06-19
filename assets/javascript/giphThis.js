@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
- // My cartoons
+ // My array of cartoons
  var myCartoons = ["Teen Titans", "Power Puffs", "Digimon", 
  "Danny Phantom", "Voltron Legendary Defenders", "Avatar the Last Airbender"];
  // An array for added cartoons
@@ -12,17 +12,18 @@ function renderCurrentButtons() {
   $("#my-cartoons").empty(); 
   for (var j = 0; j < myCartoons.length; j++) {
     var addMyButtons = $("<button>");
-    addMyButtons.addClass("cartoons"); 
+    addMyButtons.addClass("cartoon-button"); 
     addMyButtons.attr("data-cartoon", myCartoons[j]);
     addMyButtons.text(myCartoons[j]); 
     $("#my-cartoons").append(addMyButtons);
   }
 }
+/* Shows myCartoons array as buttons on the loaded page. 
+(Calls the renderCurrentButtons function) */
+renderCurrentButtons();
 
-renderCurrentButtons(myCartoons, "button", "#renderButtons");
 
-
-// Add new buttons when a user inputs a cartoon name
+// Add new buttons when a user inputs a cartoon name and hits submit
 function renderButtons() {
   // Empties the Render Buttons Div.
   $("#renderButtons").empty();
@@ -31,7 +32,7 @@ function renderButtons() {
     // creates a variable for a button
     var addButton = $("<button>");
     // adds a class to the new button
-    addButton.addClass("cartoons");
+    addButton.addClass("cartoon-button");
     // adds the attribute data cartoon to the new cartoon array.
     addButton.attr("data-cartoon", newCartoonList[i]);
     // adds text to the new cartoon list
@@ -45,18 +46,16 @@ function renderButtons() {
 // Adds a button from the user input. 
 $(document).on("click", "#add-cartoon", function(event) {
   event.preventDefault();
-
   // creates a variable that adds the user input to the cartoon input div.
   var cartoonInput = $("#cartoon-input").val().trim();
   // pushs the array newCartoonlist to the cartoonInput div (cartoon-input div)
   newCartoonList.push(cartoonInput);
   // Calls the render button function. 
-  renderButtons(newCartoonList, "button", "#cartoons");
+  renderButtons(newCartoonList, "cartoon-button", "#cartoons");
 });
 
-
-// When Clicking a Button
-$(document).on("click", "button", function() {
+// When Clicking a cartoon name button 
+$(document).on("click", ".cartoon-button", function() {
 
       $("#cartoons").empty();
       $("button").removeClass("active");
@@ -67,7 +66,7 @@ $(document).on("click", "button", function() {
       // var cartoon = $(this).attr("data-cartoon");
       // Constructing a URL to search Giphy for the name of the person who said the quote
       var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
-        dataType + "&api_key=dc6zaTOxFJmzC&limit=10";
+        dataType + "&api_key=dc6zaTOxFJmzC&limit=12";
       // Performing our AJAX GET request
       $.ajax({
           url: queryURL,
@@ -93,24 +92,26 @@ $(document).on("click", "button", function() {
               // Giving the image tag an src attribute of a proprty pulled off the
               // result item
               // Creating an image tag
-              var cartoonImage = $("<img>");
-              cartoonImage.attr("src", stilledGiph);
-              cartoonImage.attr("data-still", stilledGiph);
-              cartoonImage.attr("data-animate", animatedGiph);
-              cartoonImage.attr("data-state", "still");
-              cartoonImage.addClass("cartoon-image");
+              var cartoonGiph = $("<img>");
+              cartoonGiph.attr("src", stilledGiph);
+              cartoonGiph.attr("data-still", stilledGiph);
+              cartoonGiph.attr("data-animate", animatedGiph);
+              cartoonGiph.attr("data-state", "still");
+              cartoonGiph.addClass("cartoon-giph");
               // Appending the paragraph and personImage we created to the "gifDiv" div we created
               cartoonDiv.append(p);
-              cartoonDiv.append(cartoonImage);
+              cartoonDiv.append(cartoonGiph);
               // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
-              $("#images").prepend(cartoonDiv);
+              $("#cartoons").prepend(cartoonDiv);
             }
           }
         });
     });
 
-$(document).on("click", "button", function(){
-  var pausePlay = $(this).attr("pausePlayState");
+
+// When clicking a cartoon giph, pause or play it.
+$(document).on("click", ".cartoon-giph", function() {
+  var pausePlay = $(this).attr("data-state");
 
   if (pausePlay === "still") {
     $(this).attr("src", $(this).attr("data-animate"));
@@ -119,8 +120,8 @@ $(document).on("click", "button", function(){
     $(this).attr("src", $(this).attr("data-still"));
     $(this).attr("data-state", "still");
   }
-  renderButtons(newCartoonList, "renderButtons", "#cartoons");
 
 });
+
 
 });
