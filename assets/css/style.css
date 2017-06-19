@@ -1,0 +1,28 @@
+body {
+	background-color: white;
+}
+
+.navbar-default {
+	margin-top: 20px;
+	background-image: url("../images/digi-mon.jpg");
+	background-size: initial;
+}
+
+.navbar>.container.navbar-brand {
+	float: left;
+}
+
+#pageTitle {
+	font-size: 20px;
+	color: black;
+	margin-top: 20px;
+}
+
+#cartoon-form {
+	float: right;
+	margin: 20px 40px;
+}
+
+#add-cartoon {
+	float: right;
+}

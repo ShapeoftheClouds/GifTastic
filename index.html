@@ -2,44 +2,60 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Fun Cartoons!</title>
+	<title>Best Cartoons!</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-	<!-- JQuery -->
+  <!-- BootStrap Template -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/cyborg/bootstrap.min.css">
+
+    <!-- JQuery -->
   	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
 
+    <!-- JS Script Type -->
   	<script type="text/javascript"></script>
-  	<!-- My JS and JQ -->
+  	
+    <!-- My JS and JQ -->
   	<script src="assets/javascript/giphThis.js"></script>
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
 <body>
-  <!-- STEP TWO: between the dashed lines below
-        * add three more buttons
-        * add a data-person attribute of famous people you know
-        * with a quote said by them -->
 
-  <!--  -->
+<!-- Main Container -->
+<div class="container">
 
-  <div id="renderButtons"><!--Rendered Buttons Go Here--></div>
+  <nav class="navbar navbar-default">
+    <div class="container">
+        <a class="navbar-brand" id="pageTitle">Best Cartoons Ever</a>
 
-  <div id="my-cartoons"></div>
+        <!-- Form for the submit button -->
+        <div id="cartoonSubmitButton">
+          <form id="cartoon-form">
+            <label for="cartoon-input">Add a Cartoon!</label>
+            <input type="text" id="cartoon-input"><br>
 
-<form id="cartoon-form">
-  <label for="cartoon-input">Submit Cartoon</label>
-  <input type="text" id="cartoon-input"><br>
-
-  <input id="add-cartoon" type="submit" value="Submit Cartoon">
-</form>
-
-  <div id="cartoons"></div>
-
-  <div id="images">
+            <input id="add-cartoon" type="submit" value="Submit Cartoon">
+          </form>
+        </div>
+    <!-- Closing the Navbar-header -->
+    </div>
+  </nav>
+  <!-- User input rendered buttons go here -->
+  <div id="renderButtons"> 
+  </div>
+  <!-- My list of cartoons as buttons go here -->
+  <div id="my-cartoons">  
   </div>
 
+  <!-- Div for the giphs -->
+  <div id="cartoons"></div>
+
+<!-- Closing Container Div -->
+</div>
 </body>
 
 </html>
