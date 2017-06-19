@@ -85,8 +85,6 @@ $(document).on("click", ".cartoon-button", function() {
               // Storing the result item's rating
               var rating = results[k].rating;
               // Creating a paragraph tag with the result item's rating
-              var p = $("<p>").text("Rating: " + rating);
-
               var animatedGiph = results[k].images.fixed_height.url;
               var stilledGiph = results[k].images.fixed_height_still.url;
               // Giving the image tag an src attribute of a proprty pulled off the
@@ -99,7 +97,6 @@ $(document).on("click", ".cartoon-button", function() {
               cartoonGiph.attr("data-state", "still");
               cartoonGiph.addClass("cartoon-giph");
               // Appending the paragraph and personImage we created to the "gifDiv" div we created
-              cartoonDiv.append(p);
               cartoonDiv.append(cartoonGiph);
               // Prepending the gifDiv to the "#gifs-appear-here" div in the HTML
               $("#cartoons").prepend(cartoonDiv);

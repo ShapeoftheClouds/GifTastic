@@ -12,10 +12,18 @@ body {
 	float: left;
 }
 
+label {
+	color: #cca3a7;
+	font-size: 12px;
+	font-family: 'Archivo Black', sans-serif;
+}
+
 #pageTitle {
-	font-size: 20px;
-	color: black;
+	font-size: 60px;
+	color: #f0c050;
 	margin-top: 20px;
+	font-family: 'Archivo Black', sans-serif;
+	text-shadow: -1px 0 #2d262b, 0 1px #2d262b, 1px 0 #2d262b, 0 -1px #2d262b;
 }
 
 #cartoon-form {
@@ -25,4 +33,22 @@ body {
 
 #add-cartoon {
 	float: right;
+}
+
+input, button, select, textarea {
+	background-color: #d8d7d9;
+	font-family: 'Rajdhani', sans-serif;
+	color: #3e3744;
+	margin-right: 10px;
+	margin-top: 10px;
+	border: 1px solid;
+    border-radius: 5px;
+}
+
+.cartoon-giph {
+	float: left;
+	border: 4px solid;
+	border-radius: 5px;
+	border-color: #aebed1;
+	margin: 20px 20px;
 }
